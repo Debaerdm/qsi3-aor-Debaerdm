@@ -57,12 +57,36 @@ describe("Test tennis transitions", () => {
   test(
     "Show Player One", () => {
     let showingPlayer = PlayerOne;
-    expect(string_of_player(showingPlayer)) |> toEqual("This is player one");
+    expect(string_of_player(showingPlayer)) |> toEqual("Player One");
   });
-
   test(
     "Show Fifteen", () => {
     let point = Fifteen;
     expect(string_of_point(point)) |> toEqual("15");
+  });
+  test(
+    "Show Score points", () => {
+      let thirtyFifteen = Points{playerOne: Thirty, playerTwo: Fifteen};
+    expect(string_of_score(thirtyFifteen)) |> toEqual("Player One : 30, Player Two : 15");
+  });
+  test(
+    "Show Score Forty", () => {
+      let forty = Forty{player: PlayerOne, otherPlayerPoint: Love};
+    expect(string_of_score(forty)) |> toEqual("Player One has 40 and otherPlayer has 0");
+  });
+  test(
+    "Show Score Deuce", () => {
+      let forty = Deuce;
+    expect(string_of_score(forty)) |> toEqual("40 - 40");
+  });
+  test(
+    "Show Score Advantage", () => {
+      let forty = Advantage{PlayerOne};
+    expect(string_of_score(forty)) |> toEqual("Advantage for Player One");
+  });
+  test(
+    "Show Score Game", () => {
+      let forty = Game{PlayerOne};
+    expect(string_of_score(forty)) |> toEqual("Game for Player One");
   });
 });
